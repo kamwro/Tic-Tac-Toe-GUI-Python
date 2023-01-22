@@ -1,3 +1,5 @@
+from Exceptions import WrongCoordinatesError, WrongFieldIDError, WrongBoardError
+
 class Board:
     board = []
 
@@ -48,7 +50,7 @@ class Board:
         if row in range(0,3) and col in range(0,3) and type(row) == int and type(col) == int:
             self.board[row][col] = name
         else:
-            raise Exception("Coords should be pairs of the integers from 0 to 2")
+            raise WrongCoordinatesError(row, col)
             
     @staticmethod
     def get_coordinates(field_ID: int) -> tuple:
@@ -82,7 +84,7 @@ class Board:
             else:
                 return (0, 0)
         else:
-            raise Exception("Field ID should be an integer between 1 and 9")
+            raise WrongFieldIDError(field_ID)
 
     @staticmethod
     def get_field_ID(coords: tuple) -> int:
@@ -119,7 +121,7 @@ class Board:
                 else:
                     return 9
         else:
-            raise Exception("Coords should be pairs of the integers from 0 to 2")
+            raise WrongCoordinatesError(row, col)
 
     def replace(self, replacement_board: list):
         """ replaces the current board with another provided board
@@ -130,7 +132,7 @@ class Board:
         if len(replacement_board) == 3 and len(replacement_board[0] == 3):
             self.board = replacement_board
         else:
-            raise Exception("The board should be 2D list 3x3")
+            raise WrongBoardError(replacement_board)
 
     def get_validate_move(self) -> int:
         """ takes the user input (should be one of the board's fields ID's), validates it and returns it
@@ -210,7 +212,7 @@ class Board:
 
         Args:
             row (int): row coordinate
-            col (int): column coordinategi
+            col (int): column coordinates
 
         Returns:
             bool: if given board's field is empty
