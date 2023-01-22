@@ -17,6 +17,10 @@ class AI:
             name (str): name of the AI player
             strategy (str): name of the AI's strategy
         """
+        if type(name) != str:
+            raise TypeError("\"name\" should be of str class")
+        if type(strategy) != str:
+            raise TypeError("\"strategy\" should be of str class")
         self.name = name
         self.strategy = strategy
 

@@ -45,8 +45,11 @@ class Board:
         """
         row = coords[0]
         col = coords[1]
-        self.board[row][col] = name
-
+        if row in range(0,3) and col in range(0,3) and type(row) == int and type(col) == int:
+            self.board[row][col] = name
+        else:
+            raise Exception("Coords should be pairs of the integers from 0 to 2")
+            
     @staticmethod
     def get_coordinates(field_ID: int) -> tuple:
         """ returns the coordinates of the board's fields, given the field ID (static method)
@@ -57,26 +60,29 @@ class Board:
         Returns:
             tuple: (row, col)
         """
-        if field_ID == 1:
-            return (0, 0)
-        elif field_ID == 2:
-            return (0, 1)
-        elif field_ID == 3:
-            return (0, 2)
-        elif field_ID == 4:
-            return (1, 0)
-        elif field_ID == 5:
-            return (1, 1)
-        elif field_ID == 6:
-            return (1, 2)   
-        elif field_ID == 7:
-            return (2, 0) 
-        elif field_ID == 8:
-            return (2, 1) 
-        elif field_ID == 9:
-            return (2, 2)
+        if field_ID in range(1,10) and type(field_ID) == int:
+            if field_ID == 1:
+                return (0, 0)
+            elif field_ID == 2:
+                return (0, 1)
+            elif field_ID == 3:
+                return (0, 2)
+            elif field_ID == 4:
+                return (1, 0)
+            elif field_ID == 5:
+                return (1, 1)
+            elif field_ID == 6:
+                return (1, 2)   
+            elif field_ID == 7:
+                return (2, 0) 
+            elif field_ID == 8:
+                return (2, 1) 
+            elif field_ID == 9:
+                return (2, 2)
+            else:
+                return (0, 0)
         else:
-            return (0, 0)
+            raise Exception("Field ID should be an integer between 1 and 9")
 
     @staticmethod
     def get_field_ID(coords: tuple) -> int:
@@ -90,27 +96,30 @@ class Board:
         """
         row = coords[0]
         col = coords[1]
-        if row == 0:
-            if col == 0:
-                return 1
-            elif col == 1:
-                return 2
+        if row in range(0,3) and col in range(0,3) and type(row) == int and type(col) == int:
+            if row == 0:
+                if col == 0:
+                    return 1
+                elif col == 1:
+                    return 2
+                else:
+                    return 3
+            elif row == 1:
+                if col == 0:
+                    return 4
+                elif col == 1:
+                    return 5
+                else:
+                    return 6
             else:
-                return 3
-        elif row == 1:
-            if col == 0:
-                return 4
-            elif col == 1:
-                return 5
-            else:
-                return 6
+                if col == 0:
+                    return 7
+                elif col == 1:
+                    return 8
+                else:
+                    return 9
         else:
-            if col == 0:
-                return 7
-            elif col == 1:
-                return 8
-            else:
-                return 9
+            raise Exception("Coords should be pairs of the integers from 0 to 2")
 
     def replace(self, replacement_board: list):
         """ replaces the current board with another provided board
@@ -118,7 +127,10 @@ class Board:
         Args:
             replacementBoard (list): a new board
         """
-        self.board = replacement_board
+        if len(replacement_board) == 3 and len(replacement_board[0] == 3):
+            self.board = replacement_board
+        else:
+            raise Exception("The board should be 2D list 3x3")
 
     def get_validate_move(self) -> int:
         """ takes the user input (should be one of the board's fields ID's), validates it and returns it
@@ -198,7 +210,7 @@ class Board:
 
         Args:
             row (int): row coordinate
-            col (int): column coordinate
+            col (int): column coordinategi
 
         Returns:
             bool: if given board's field is empty
