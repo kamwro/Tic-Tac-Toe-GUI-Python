@@ -1,4 +1,8 @@
-# Tic Tac Toe
+# Prerequesities
+
+(Python)[https://www.python.org/] with (PySimpleGUI)[https://www.pysimplegui.org/en/latest/
+
+# Overview
 
 This is a Tic Tac Toe GUI game written in Python by the learning student of programming with the PySimpleGUI module.
 You can find my console version written in C++ here: https://github.com/kamwro/Tic-Tac-Toe-CPP
