@@ -1,6 +1,6 @@
 # Prerequesities
 
-(Python)[https://www.python.org/] with (PySimpleGUI)[https://www.pysimplegui.org/en/latest/
+[Python](https://www.python.org/) with [PySimpleGUI](https://www.pysimplegui.org/en/latest/)
 
 # Overview
 
